@@ -1,25 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { Component } from 'react'
+import Navbar from './components/Navbar';
+import Home from './components/Home'
+import About from './components/About'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import LoadingBar from 'react-top-loading-bar'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state = {
+    loading: 100
+  }
+
+  setProgress = (loading) =>{
+    this.setState({ loading: loading})
+  }
+  render() {
+    return (
+      <div>
+        <Router>
+          <Navbar/>
+          <LoadingBar
+            color='#f11946'
+            progress={this.state.loading}
+            />
+          <Switch>
+          <div className='container'>
+            <Route exact path="/"><Home/></Route>
+            <Route exact path="/home"><Home/></Route>
+            <Route exact path="/about"><About/></Route>
+          </div>
+          </Switch>
+        </Router>
+      </div>
+    )
+  }
 }
-
-export default App;
