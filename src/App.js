@@ -32,6 +32,8 @@ export default class App extends Component {
             <Route exact path="/"><Home/></Route>
             <Route exact path="/home"><Home/></Route>
             <Route exact path="/about"><About/></Route>
+            <Route exact path="/about"><About/></Route>
+
           </div>
           </Switch>
         </Router>
